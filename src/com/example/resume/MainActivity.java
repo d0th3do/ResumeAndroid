@@ -27,17 +27,16 @@ import android.widget.TextView;
  * */
 @SuppressLint("NewApi") public class MainActivity extends Activity implements OnClickListener {
 
-	Button newButton;
-    Button openButton; 
-    ListView newList; 
-    ListView openList;
-    TableRow newListRow;
-    TableRow openListRow;
-    ArrayAdapter newAdapter, openAdapter;
-    TextView newResumeItem;
+	private Button newButton;
+	private Button openButton; 
+	private ListView newList; 
+	private ListView openList;
+	private TableRow newListRow;
+	private TableRow openListRow;
+	private ArrayAdapter newAdapter, openAdapter;
+	private TextView newResumeItem;
     
-    final String[] newActions = { "New Resume", "New Test", "New OMG" };
-    
+	private final String[] newActions = { "New Resume", "New Test", "New OMG" };
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +53,8 @@ import android.widget.TextView;
         newList.setItemsCanFocus(true);
         openList.setItemsCanFocus(true);
         
-        newAdapter = new ArrayAdapter<String>(this, R.layout.list_row, R.id.list_item, newActions);
-        openAdapter = new ArrayAdapter<String>(this, R.layout.list_row, R.id.list_item , newActions);
+        newAdapter = new ArrayAdapter<String>(this, R.layout.main_row, R.id.list_item, newActions);
+        openAdapter = new ArrayAdapter<String>(this, R.layout.main_row, R.id.list_item , newActions);
         
         
         newList.setAdapter(newAdapter);
@@ -68,16 +67,20 @@ import android.widget.TextView;
         		newListRow.getHandler().post(new Runnable() {
         			public void run() {
 		        		if(newListRow.getVisibility() == View.VISIBLE){
-		        	    	newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_out));
-		        	    	newListRow.setAlpha(0.0f);
+		        	    	//newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_out));
+		        			newList.setVisibility(View.INVISIBLE);
+		        			ResumeHelper.collapse(newListRow);
+		        	    	//newListRow.setAlpha(0.0f);
 		        	    	newListRow.setVisibility(View.GONE);
 		    	    	}
 		    	    	if(openListRow.getVisibility() == View.VISIBLE){
-		    	    		
-		        	    	openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_out));
-		        	    	openListRow.setAlpha(0.0f);
+		    	    		openList.setVisibility(View.INVISIBLE);
+		        	    	//openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_out));
+		        	    	ResumeHelper.collapse(openListRow);
+		        	    	//openListRow.setAlpha(0.0f);
 		        	    	openListRow.setVisibility(View.GONE);
 		    	    	}
+		    	    	setContentView(R.layout.new_resume);
 		    	    	//code to switch to new activity
         			}
         		});
@@ -105,15 +108,17 @@ import android.widget.TextView;
         	@Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         	    	Log.d("DEBUG:", "****** Position="+position+" id="+id+"*********");
         			if(newListRow.getVisibility() == View.VISIBLE){
-        	    		
-            	    	newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_out));
-            	    	newListRow.setAlpha(0.0f);
+        				newList.setVisibility(View.INVISIBLE);
+        				ResumeHelper.collapse(openListRow);
+            	    	//newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_out));
+            	    	//newListRow.setAlpha(0.0f);
             	    	newListRow.setVisibility(View.GONE);
         	    	}
         	    	if(openListRow.getVisibility() == View.VISIBLE){
-        	    		
-            	    	openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_out));
-            	    	openListRow.setAlpha(0.0f);
+        	    		openList.setVisibility(View.INVISIBLE);
+        	    		ResumeHelper.collapse(openListRow);
+            	    	//openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_out));
+            	    	//openListRow.setAlpha(0.0f);
             	    	openListRow.setVisibility(View.GONE);
         	    	}
     	    }
@@ -123,16 +128,20 @@ import android.widget.TextView;
         	openListRow.getHandler().post(new Runnable() {
         	    public void run() {
         	    	if(newListRow.getVisibility() == View.VISIBLE){
-        	    		
-            	    	newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_out));
-            	    	newListRow.setAlpha(0.0f);
+        	    		newList.setVisibility(View.INVISIBLE);
+        	    		ResumeHelper.collapse(newListRow);
+            	    	//newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_out));
+            	    	//newListRow.setAlpha(0.0f);
             	    	newListRow.setVisibility(View.GONE);
         	    	}
         	    	if(openListRow.getVisibility() == View.GONE){
-        	    		openListRow.setAlpha(0.0f);
+        	    		//openListRow.setAlpha(0.0f);
+        	    		ResumeHelper.expand(openListRow);
+        	    		openList.setVisibility(View.VISIBLE);
         	    		openListRow.setVisibility(View.VISIBLE);
-            	    	openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_in));
-            	    	openListRow.setAlpha(1.0f);
+            	    	//openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_in));
+            	    	//openListRow.setAlpha(1.0f);
+        	    		
         	    	}
         	    	
         	    	
@@ -148,16 +157,21 @@ import android.widget.TextView;
         	    	
         	    	
         	    	if(openListRow.getVisibility() == View.VISIBLE){
-        	    		
-            	    	openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_out));
-            	    	openListRow.setAlpha(0.0f);
+        	    		openList.setVisibility(View.INVISIBLE);
+        	    		ResumeHelper.collapse(openListRow);
+
+            	    	//openListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.open_fade_out));
+            	    	//openListRow.setAlpha(0.0f);
             	    	openListRow.setVisibility(View.GONE);
         	    	}
         	    	if(newListRow.getVisibility() == View.GONE){
-        	    		newListRow.setAlpha(0.0f);
+        	    		ResumeHelper.expand(newListRow);
+        	    		newList.setVisibility(View.VISIBLE);
+
+        	    		//newListRow.setAlpha(0.0f);
         	    		newListRow.setVisibility(View.VISIBLE);
-            	    	newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_in));
-            	    	newListRow.setAlpha(1.0f);
+            	    	//newListRow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.new_fade_in));
+            	    	//newListRow.setAlpha(1.0f);
         	    	}        	    	
 
         	    	

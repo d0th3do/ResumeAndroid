@@ -1,8 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/new_resume_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_resume_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/new_resume_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_resume_name_hint"
+            android:singleLine="true" >
+
+        </EditText>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/new_resume_personal_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_resume_personal_info"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <EditText
+            android:id="@+id/new_resume_fullname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_resume_fullname_hint"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dp" />
+
+        <EditText
+            android:id="@+id/new_resume_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_resume_email_hint"
+            android:inputType="textEmailAddress"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dp" />
+
+        <EditText
+            android:id="@+id/new_resume_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_resume_phone_hint"
+            android:inputType="phone"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="5dp" />
+
+        <EditText
+            android:id="@+id/new_resume_address_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_resume_address_hint"
+            android:inputType="textPostalAddress"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/new_resume_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/new_resume_city_hint"
+            android:singleLine="true" />
+
+        <Spinner
+            android:id="@+id/new_resume_state_spinner"
+            android:layout_width="83dp"
+            android:layout_height="36dp"
+            android:entries="@array/states" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/new_resume_zip_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.63"
+            android:ems="10"
+            android:hint="@string/new_resume_zip_code_hint"
+            android:inputType="number"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_weight="0.63" />
+
+        <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="5dp"
+	        android:background="@android:color/darker_gray" />
+
+    	<View
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="26dp" />
+
+    </LinearLayout>
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:gravity="left|bottom"
+         android:orientation="horizontal" >
+
+         <Button
+             android:id="@+id/new_resume_cancel_button"
+             style="?android:attr/buttonStyleSmall"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/new_resume_cancel_button" />
+
+     </LinearLayout>
+
+     <View
+         android:layout_width="fill_parent"
+         android:layout_height="20dp"
+         android:layout_weight="0.63" />
+         
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:gravity="right|bottom"
+         android:orientation="horizontal" >
+
+         <Button
+             android:id="@+id/new_resume_continue_button"
+             style="?android:attr/buttonStyleSmall"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_weight="0.63"
+             android:text="@string/new_resume_continue_button" />
+
+     </LinearLayout>
+
+</LinearLayout>
+     
     
 
 </LinearLayout>
