@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <item name="config_longAnimTime" format="integer" type="integer">2</item>
+
+</resources>
